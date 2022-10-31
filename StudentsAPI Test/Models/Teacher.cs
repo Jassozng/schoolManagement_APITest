@@ -3,7 +3,7 @@
     public class Teacher
     {
         public int Id { get; set; }
-        public int IdUser { get; set; }
+        public virtual User User { get; set; }
         public string RFC { get; set; }
     }
 }

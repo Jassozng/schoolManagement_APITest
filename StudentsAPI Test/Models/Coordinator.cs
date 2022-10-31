@@ -1,9 +1,15 @@
-﻿namespace StudentsAPI_Test.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace StudentsAPI_Test.Models
 {
     public class Coordinator
     {
+        [Key]
         public int Id { get; set; }
-        public int IdUser { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
         public string RFC { get; set; }
     }
 }
