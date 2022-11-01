@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StudentsAPI_Test.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class UserController : Controller
     {
         //dbContext setup
@@ -49,6 +51,7 @@ namespace StudentsAPI_Test.Controllers
             {
                 _context.Entry(user).State = EntityState.Modified;
                 _context.SaveChanges();
+
                 return StatusCode(StatusCodes.Status200OK, "OK");
             }
             catch (Exception ex)
@@ -64,11 +67,12 @@ namespace StudentsAPI_Test.Controllers
         {
             try
             {
-                User? user = _context.User.Where(x => x.Id == idUser).FirstOrDefault();
+                User? user = _context.User.FirstOrDefault(x => x.Id == idUser);
                 if (user == null) return StatusCode(StatusCodes.Status404NotFound);
                 user.Status = false;
                 _context.Entry(user).State = EntityState.Modified;
                 _context.SaveChanges();
+
                 return StatusCode(StatusCodes.Status200OK, "OK");
             }
             catch (Exception ex)

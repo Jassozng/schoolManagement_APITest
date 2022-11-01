@@ -15,11 +15,6 @@ namespace StudentsAPI_Test.Models
             public DbSet<Coordinator> Coordinator { get; set; }
             public DbSet<Student> Student { get; set; }
 
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
-            {
-
-                base.OnModelCreating(modelBuilder);
-            }
         }
     }
 }

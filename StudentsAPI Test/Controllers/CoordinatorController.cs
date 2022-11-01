@@ -6,31 +6,31 @@ namespace StudentsAPI_Test.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TeacherController : Controller
+    public class CoordinatorController : Controller
     {
         //dbContext setup
         private readonly ApplicationDbContext _context;
-        public TeacherController(ApplicationDbContext context)
+        public CoordinatorController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Teacher/GetAll
+        // GET: Coordinator/GetAll
         [HttpGet]
         [Route("[action]")]
-        public List<Teacher> GetAll()
+        public List<Coordinator> GetAll()
         {
-            return _context.Teacher.ToList();
+            return _context.Coordinator.ToList();
         }
 
-        // POST: Teacher/Insert/TeacherObj
+        // POST: Coordinator/Insert/CoordinatorObj
         [HttpPost]
         [Route("[action]")]
         public IActionResult Insert(User user)
         {
             try
             {
-                _context.Teacher.Add(new Teacher() { User = user, RFC = "" });
+                _context.Coordinator.Add(new Coordinator() { User = user, RFC = "" });
                 _context.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, "OK");
